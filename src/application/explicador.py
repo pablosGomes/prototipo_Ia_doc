@@ -122,3 +122,6 @@ def _secao_clone(pares: Optional[list[ParClonado]]) -> str:
 - Amostras de pares (até 5): {amostras}
 - Interpretação: regiões com altíssima correlação em posições distantes indicam que um trecho \
 foi copiado e colado dentro do próprio documento — típico de alteração de dígitos ou datas."""
+
+
+
