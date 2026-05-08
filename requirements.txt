@@ -3,8 +3,8 @@ numpy
 scipy
 scikit-image
 opencv-python
-matplotlib
-imagehash
 fastapi
 uvicorn[standard]
 python-multipart
+google-genai
+python-dotenv
