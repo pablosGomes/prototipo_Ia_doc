@@ -38,6 +38,7 @@ class ResultadoAnalise:
     ela_mapa: Optional[Image.Image]
     noise_mapa: Optional[np.ndarray]
     clone_pares: Optional[list[ParClonado]]
+    clone_tamanho_bloco_efetivo: Optional[int]
     salvo: ResultadoSalvo
     config: ConfiguracaoPipeline
 
@@ -90,9 +91,19 @@ def executar(
         else None
     )
 
-    clone_pares = (
-        clone.analisar(imagem, tamanho_bloco=config.clone_tamanho_bloco, limiar=config.clone_limiar)
+    clone_tamanho_bloco_efetivo = (
+        clone.tamanho_bloco_efetivo(
+            largura=imagem.width,
+            altura=imagem.height,
+            tamanho_bloco=config.clone_tamanho_bloco,
+        )
         if config.executar_clone
+        else None
+    )
+
+    clone_pares = (
+        clone.analisar(imagem, tamanho_bloco=clone_tamanho_bloco_efetivo, limiar=config.clone_limiar)
+        if clone_tamanho_bloco_efetivo is not None
         else None
     )
 
@@ -110,6 +121,7 @@ def executar(
         ela_mapa=ela_mapa,
         noise_mapa=noise_mapa,
         clone_pares=clone_pares,
+        clone_tamanho_bloco_efetivo=clone_tamanho_bloco_efetivo,
         salvo=salvo,
         config=config,
     )

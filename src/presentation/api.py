@@ -82,6 +82,8 @@ async def analisar(
         "tem_suspeitas": resultado.tem_suspeitas,
         "metodos_executados": resultado.metodos_executados,
         "clone_total_pares": len(resultado.clone_pares) if resultado.clone_pares is not None else None,
+        "clone_tamanho_bloco_solicitado": clone_tamanho_bloco if resultado.clone_pares is not None else None,
+        "clone_tamanho_bloco_efetivo": resultado.clone_tamanho_bloco_efetivo,
         "mapas": {
             "ela":   f"/resultado/{resultado.id}/mapa/ela"   if resultado.ela_mapa   is not None else None,
             "noise": f"/resultado/{resultado.id}/mapa/noise" if resultado.noise_mapa is not None else None,
